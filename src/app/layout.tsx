@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+
+const notoSansKr = Noto_Sans_KR({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-noto-sans-kr",
+});
 
 export const metadata: Metadata = {
   title: "탱고인사이트 | AI 기반 문서 데이터화 전문 기업",
@@ -32,7 +39,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="h-full">
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <body
+        className={`${notoSansKr.className} min-h-full flex flex-col antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

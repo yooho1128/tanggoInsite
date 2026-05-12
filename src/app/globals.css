@@ -1,72 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&display=swap');
+@import url("https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css");
 @import "tailwindcss";
 
 :root {
-  /* 모던 서점 + AI 팔레트 */
-  --color-primary: #3730a3;
+  /* 2026 AI SaaS Color System */
+  --color-primary: #5b21b6;
   --color-primary-mid: #4338ca;
   --color-primary-light: #818cf8;
-  --color-amber: #d97706;
-  --color-gold: #c9a84c;
+  --color-secondary: #2563eb;
 
-  --color-bg-cream: #fefcf8;
-  --color-bg-warm: #f5ede0;
-  --color-bg-paper: #fffdf5;
-  --color-bg-dark: #1a0f06;
+  --color-bg-main: #f8fbff;
+  --color-bg-soft: #f1ebff;
+  --color-bg-card: rgba(255, 255, 255, 0.7);
 
-  --color-text-dark: #1c0f06;
-  --color-text-brown: #3d2410;
-  --color-text-muted: #7a5e42;
-  --color-text-light: #a08060;
+  --color-text-main: #0f172a;
+  --color-text-sub: #475569;
+  --color-text-soft: #64748b;
 
-  --color-border: #dfd0b4;
-  --color-border-light: #ede5d4;
+  --color-border: rgba(255, 255, 255, 0.7);
 
-  --shadow-warm: 0 4px 20px rgba(201, 168, 76, 0.15);
-  --shadow-warm-md: 0 8px 30px rgba(201, 168, 76, 0.18);
+  --shadow-glow: 0 8px 40px rgba(91, 33, 182, 0.12);
+  --shadow-card: 0 8px 30px rgba(59, 130, 246, 0.08);
 
-  --background: var(--color-bg-cream);
-  --foreground: var(--color-text-brown);
+  --background: var(--color-bg-main);
+  --foreground: var(--color-text-main);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
+  font-family: "SUIT", sans-serif;
+  letter-spacing: -0.025em;
   background: var(--background);
   color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo",
-    "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+/* 전체 제목 스타일 현대적으로 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "SUIT", sans-serif;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+
+/* 기존 serif 제거 */
+.font-serif-kr {
+  font-family: "SUIT", sans-serif !important;
+}
+
+/* AI 느낌 그라디언트 */
 @layer utilities {
-  /* 인디고 → 앰버 그라디언트 텍스트 (AI meets 서점) */
   .text-gradient {
-    background: linear-gradient(135deg, #4338ca 0%, #d97706 100%);
+    background: linear-gradient(
+      135deg,
+      #5b21b6 0%,
+      #4338ca 50%,
+      #2563eb 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* 크림 → 골드 그라디언트 (다크 섹션용) */
-  .text-gradient-warm {
-    background: linear-gradient(135deg, #fde8c0 0%, #fbbf24 60%, #f59e0b 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: var(--shadow-card);
   }
 
-  /* 세리프 서체 — 서점/책 느낌 헤딩 */
-  .font-serif-kr {
-    font-family: "Noto Serif KR", "Batang", "HY신명조", Georgia, serif;
+  .purple-glow {
+    box-shadow: 0 0 80px rgba(91, 33, 182, 0.18);
   }
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #fefcf8; }
-::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #d97706; }
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eef2ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    #5b21b6,
+    #4338ca
+  );
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5b21b6;
+}
+
+/* Selection */
+::selection {
+  background: rgba(91, 33, 182, 0.15);
+  color: #0f172a;
+}
